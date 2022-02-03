@@ -5,7 +5,7 @@
   </header>
 
   <% if enhanced_cart.size < 1 %>
-    <div style="display: flex; flex-direction: column; align-items: center;">
+    <div class="alert alert-info" role="alert" style="display: flex; flex-direction: column; align-items: center;">
       <h3>Your Shopping Cart Is Empty!</h3>
       <a href="/"><button>Return to the Home Page</button></a>
     </div>
@@ -55,6 +55,5 @@
       <% end %>
     </div>
   </div>
-
+  <% end %>
 </section>
-<% end %>
