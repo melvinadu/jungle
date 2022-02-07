@@ -1,0 +1,15 @@
+<div class="card">
+<figure class="card-img-top" style="text-align: center;">
+  <%= image_tag product.image.thumb %>
+  </figure>
+  <div class="card-body">
+    <h5 class="card-title" style="text-align: center;"><%= product.name %></h5>
+    <p class="card-text"><%= product.description %></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Product Price: <%= humanized_money_with_symbol product.price %></li>
+    <li class="list-group-item">Quantity: <%= quantity %></li>
+    <li class="list-group-item">Total Cost: <%= humanized_money_with_symbol product.price * quantity %></li>
+     <li class="list-group-item">Email: <%= @order.email %></li>
+  </ul>
+</div>
