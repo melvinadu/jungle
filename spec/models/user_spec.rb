@@ -68,6 +68,42 @@ RSpec.describe User, type: :model do
       expect(@user.id).to be_present
       expect(@user1.id).not_to be_present
     end
-    
+
+    describe '.authenticate_with_credentials' do
+      it 'should authenticate users' do
+
+        @user = User.new(
+        email: '123',
+        name: 'John Smith',
+        password: '1234',
+        password_confirmation: '1234'
+        )
+
+        @user.save
+
+        @user = User.authenticate_with_credentials('123','1234')
+  
+        expect(@user).to be_present
+      end
+
+      it 'should still authenticate when email has extra spaces surrounding it' do
+
+        @user = User.new(
+        email: '123',
+        name: 'John Smith',
+        password: '1234',
+        password_confirmation: '1234'
+        )
+
+        @user.save
+
+        @user = User.authenticate_with_credentials(' 123 ','1234')
+  
+        expect(@user).to be_present
+      end
+
+      
+    end
+
   end
 end
