@@ -102,7 +102,21 @@ RSpec.describe User, type: :model do
         expect(@user).to be_present
       end
 
-      
+      it 'should still authenticate when email regardless of case sensitivity' do
+
+        @user = User.new(
+        email: 'EXample@domain.com',
+        name: 'John Smith',
+        password: '1234',
+        password_confirmation: '1234'
+        )
+
+        @user.save
+
+        @user = User.authenticate_with_credentials('exAmple@domain.com','1234')
+  
+        expect(@user).to be_present
+      end
     end
 
   end
